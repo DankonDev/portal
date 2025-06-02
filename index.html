@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dankon Games</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("YOUR_PUBLIC_KEY"); // <-- Zmienisz to na swój klucz
+    })();
+  </script>
 </head>
 <body>
 
@@ -13,53 +18,79 @@
   <header class="navbar">
     <div class="logo">Dankon Games</div>
     <nav class="nav-links">
-      <a href="#about">About Us</a>
-      <a href="#games">Our Games</a>
-      <a href="#contact">Contact Us</a>
+      <a href="#about" class="nav-link">About Us</a>
+      <a href="#games" class="nav-link">Our Games</a>
+      <a href="#contact" class="nav-link">Contact Us</a>
     </nav>
   </header>
 
-  <!-- Our Games Section -->
-  <section class="our-games" id="games">
-    <h2 class="section-title">Our Games</h2>
-    <p class="games-description">
-      Discover our premier selection of titles! From Steam to Google Play, we offer games that deliver excitement and originality to millions of players worldwide.
+  <!-- About Us Section -->
+  <section class="about" id="about">
+    <h2 class="section-title">About Us</h2>
+    <p class="about-description">
+      Welcome to Dankon Games! We’re an indie game studio passionate about creating immersive and fun experiences. Whether it's brain-challenging quizzes or city-building adventures, we aim to bring joy and innovation to every platform.
     </p>
-
-    <div class="games-list">
-      <div class="game-entry">
-        <img src="bouncyescape.png" alt="Bouncy Escape">
-        <div class="game-info">
-          <h3>Bouncy Escape</h3>
-          <p><i class="fa-brands fa-steam"></i> Steam</p>
-        </div>
-      </div>
-
-      <div class="game-entry">
-        <img src="brainrotquiz.png" alt="Brainrot Quiz">
-        <div class="game-info">
-          <h3>Brainrot Quiz</h3>
-          <p><i class="fa-brands fa-google-play"></i> Google Play</p>
-        </div>
-      </div>
-
-      <div class="game-entry">
-        <img src="buildmaster.png" alt="Build Master">
-        <div class="game-info">
-          <h3>Build Master: City Island</h3>
-          <p><i class="fa-brands fa-google-play"></i> Google Play</p>
-        </div>
-      </div>
-
-      <div class="game-entry">
-        <img src="idlecandyclicker.png" alt="Idle Candy Clicker Tycoon">
-        <div class="game-info">
-          <h3>Idle Candy Clicker Tycoon</h3>
-          <p><i class="fa-brands fa-google-play"></i> Google Play</p>
-        </div>
-      </div>
-    </div>
   </section>
+
+  <!-- Our Games Section (jak wcześniej, nie powtarzam tutaj) -->
+
+  <!-- Contact Us Section -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <form id="contact-form">
+      <label>Name:</label>
+      <input type="text" name="from_name" required />
+
+      <label>Email:</label>
+      <input type="email" name="from_email" required />
+
+      <label>Game:</label>
+      <select name="game" required>
+        <option value="">-- Select Game --</option>
+        <option value="Bouncy Escape">Bouncy Escape</option>
+        <option value="Brainrot Quiz">Brainrot Quiz</option>
+        <option value="Build Master">Build Master: City Island</option>
+        <option value="Idle Candy Clicker">Idle Candy Clicker Tycoon</option>
+      </select>
+
+      <label>Issue Type:</label>
+      <select name="issue_type" required>
+        <option value="">-- Select Issue --</option>
+        <option value="Bug">Bug</option>
+        <option value="Payment Issue">Payment Issue</option>
+        <option value="Gameplay Help">Gameplay Help</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Message:</label>
+      <textarea name="message" rows="5" required></textarea>
+
+      <div class="checkbox">
+        <input type="checkbox" required /> Agree with policy of zero fraud tolerance*
+      </div>
+
+      <button type="submit">Send message</button>
+    </form>
+  </section>
+
+  <script>
+    // Highlight active nav link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Contact form submit
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => alert('Message sent!'))
+        .catch(error => alert('Failed: ' + JSON.stringify(error)));
+    });
+  </script>
 
 </body>
 </html>
