@@ -84,12 +84,21 @@
     });
 
     // Contact form submit
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-        .then(() => alert('Message sent!'))
-        .catch(error => alert('Failed: ' + JSON.stringify(error)));
-    });
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Dodajemy dynamiczne pole 'time'
+  const now = new Date().toLocaleString();
+  const timeInput = document.createElement('input');
+  timeInput.type = 'hidden';
+  timeInput.name = 'time';
+  timeInput.value = now;
+  this.appendChild(timeInput);
+
+  emailjs.sendForm('service_ifr56xd', 'service_ifr56xd', this)
+    .then(() => alert('Message sent!'))
+    .catch(error => alert('Failed: ' + JSON.stringify(error)));
+});
   </script>
 
 </body>
