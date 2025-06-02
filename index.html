@@ -1,16 +1,11 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dankon Games</title>
+  <title>Dankon Games - About Us</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    (function() {
-      emailjs.init("hxFtn4ES55vtUJ8D7"); // <-- Zmienisz to na swój klucz
-    })();
-  </script>
 </head>
 <body>
 
@@ -18,127 +13,20 @@
   <header class="navbar">
     <div class="logo">Dankon Games</div>
     <nav class="nav-links">
-      <a href="#about" class="nav-link">About Us</a>
-      <a href="#games" class="nav-link">Our Games</a>
-      <a href="#contact" class="nav-link">Contact Us</a>
+      <a href="index.html" class="nav-link">About Us</a>
+      <a href="games.html" class="nav-link">Our Games</a>
+      <a href="privacy.html" class="nav-link">Privacy Policy</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
     </nav>
   </header>
 
   <!-- About Us Section -->
-  <section class="about" id="about">
+  <section class="about">
     <h2 class="section-title">About Us</h2>
     <p class="about-description">
       Welcome to Dankon Games! We’re an indie game studio passionate about creating immersive and fun experiences. Whether it's brain-challenging quizzes or city-building adventures, we aim to bring joy and innovation to every platform.
     </p>
   </section>
-
-  <section class="our-games" id="games">
-    <h2 class="section-title">Our Games</h2>
-    <p class="games-description">
-      Discover our premier selection of titles! From Steam to Google Play, we offer games that deliver excitement and originality to millions of players worldwide.
-    </p>
-
-    <div class="games-list">
-      <div class="game-entry">
-        <img src="bouncyescape.png" alt="Bouncy Escape">
-        <div class="game-info">
-          <h3>Bouncy Escape</h3>
-          <p><i class="fa-brands fa-steam"></i> Steam</p>
-        </div>
-      </div>
-
-      <div class="game-entry">
-        <img src="brainrotquiz.png" alt="Brainrot Quiz">
-        <div class="game-info">
-          <h3>Brainrot Quiz</h3>
-          <p><i class="fa-brands fa-google-play"></i> Google Play</p>
-        </div>
-      </div>
-
-      <div class="game-entry">
-        <img src="buildmaster.png" alt="Build Master">
-        <div class="game-info">
-          <h3>Build Master: City Island</h3>
-          <p><i class="fa-brands fa-google-play"></i> Google Play</p>
-        </div>
-      </div>
-
-      <div class="game-entry">
-        <img src="idlecandyclicker.png" alt="Idle Candy Clicker Tycoon">
-        <div class="game-info">
-          <h3>Idle Candy Clicker Tycoon</h3>
-          <p><i class="fa-brands fa-google-play"></i> Google Play</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Us Section -->
-  <section class="contact" id="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <form id="contact-form">
-      <label>Name:</label>
-      <input type="text" name="from_name" required />
-
-      <label>Email:</label>
-      <input type="email" name="from_email" required />
-
-      <label>Game:</label>
-      <select name="game" required>
-        <option value="">-- Select Game --</option>
-        <option value="Bouncy Escape">Bouncy Escape</option>
-        <option value="Brainrot Quiz">Brainrot Quiz</option>
-        <option value="Build Master">Build Master: City Island</option>
-        <option value="Idle Candy Clicker">Idle Candy Clicker Tycoon</option>
-      </select>
-
-      <label>Issue Type:</label>
-      <select name="issue_type" required>
-        <option value="">-- Select Issue --</option>
-        <option value="Bug">Bug</option>
-        <option value="Payment Issue">Payment Issue</option>
-        <option value="Gameplay Help">Gameplay Help</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label>Message:</label>
-      <textarea name="message" rows="5" required></textarea>
-
-      <div class="checkbox">
-        <input type="checkbox" required /> Agree with (link do privacy policy)
-      </div>
-
-      <button type="submit">Send message</button>
-    </form>
-  </section>
-
-  <script>
-    // Highlight active nav link
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
-
-    // Contact form submit
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  // Dodajemy dynamiczne pole 'time'
-  const now = new Date().toLocaleString();
-  const timeInput = document.createElement('input');
-  timeInput.type = 'hidden';
-  timeInput.name = 'time';
-  timeInput.value = now;
-  this.appendChild(timeInput);
-
-  emailjs.sendForm('service_ifr56xd', 'template_te6cs2n', this)
-    .then(() => alert('Message sent!'))
-    .catch(error => alert('Failed: ' + JSON.stringify(error)));
-});
-  </script>
 
 </body>
 </html>
