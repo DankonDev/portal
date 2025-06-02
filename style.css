@@ -193,4 +193,57 @@ body {
   font-size: 1.3rem;
   color: #444;
 }
+.gallery {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f4f4f4;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 600%; /* 6 images */
+}
+
+.carousel-track img {
+  width: 100%;
+  flex-shrink: 0;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px 20px;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
 
