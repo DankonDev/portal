@@ -115,3 +115,69 @@ body {
   margin-right: 0.4rem;
   color: #888;
 }
+/* Highlight active nav */
+.nav-link.active {
+  border-bottom: 2px solid #38196b;
+}
+
+/* About Section */
+.about {
+  padding: 5rem 9%;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+.about-description {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.3rem;
+  color: #444;
+}
+
+/* Contact Section */
+.contact {
+  padding: 5rem 9%;
+  background-color: #fff;
+  text-align: left;
+  max-width: 700px;
+  margin: auto;
+}
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.contact label {
+  font-weight: 600;
+}
+.contact input,
+.contact select,
+.contact textarea {
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  font-size: 1rem;
+}
+.contact textarea {
+  resize: vertical;
+}
+.contact .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+.contact button {
+  padding: 1rem;
+  background-color: #1b25dd;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.contact button:hover {
+  background-color: #0f1abf;
+}
