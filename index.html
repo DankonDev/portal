@@ -95,7 +95,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   timeInput.value = now;
   this.appendChild(timeInput);
 
-  emailjs.sendForm('service_ifr56xd', 'service_ifr56xd', this)
+  emailjs.sendForm('service_ifr56xd', 'template_te6cs2n', this)
     .then(() => alert('Message sent!'))
     .catch(error => alert('Failed: ' + JSON.stringify(error)));
 });
