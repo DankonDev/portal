@@ -28,6 +28,60 @@
     </p>
   </section>
 
-  
+    <!-- Gallery Section -->
+  <section class="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">&#10094;</button>
+      <div class="carousel-track">
+        <img src="1.png" alt="Screenshot 1" />
+        <img src="2.png" alt="Screenshot 2" />
+        <img src="3.png" alt="Screenshot 3" />
+        <img src="4.png" alt="Screenshot 4" />
+        <img src="5.png" alt="Screenshot 5" />
+        <img src="6.png" alt="Screenshot 6" />
+      </div>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+  </section>
+
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+    const images = document.querySelectorAll('.carousel-track img');
+    let index = 0;
+    let autoScroll = true;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % images.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + images.length) % images.length;
+      updateCarousel();
+    }
+
+    nextBtn.addEventListener('click', () => {
+      autoScroll = false;
+      nextSlide();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      autoScroll = false;
+      prevSlide();
+    });
+
+    setInterval(() => {
+      if (autoScroll) nextSlide();
+    }, 4000);
+  </script>
+
+
 </body>
 </html>
