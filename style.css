@@ -181,3 +181,16 @@ body {
 .contact button:hover {
   background-color: #0f1abf;
 }
+.privacy {
+  padding: 5rem 9%;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.privacy-description {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.3rem;
+  color: #444;
+}
+
