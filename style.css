@@ -137,7 +137,7 @@ body {
 .contact {
   padding: 5rem 9%;
   background-color: #fff;
-  text-align: left;
+  text-align: center; /* zmienione z left na center */
   max-width: 700px;
   margin: auto;
 }
@@ -363,6 +363,25 @@ body {
 
 .store-link:hover {
   color: #6c35d0;
+}
+.social-media {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.social-icon {
+  font-size: 2.8rem;
+  color: #38196b;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover,
+.social-icon:focus {
+  color: #7a4ddb; /* jaśniejszy fiolet */
+  transform: scale(1.2);
+  outline: none;
 }
 
 
