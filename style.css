@@ -261,13 +261,13 @@ body {
 }
 
 .carousel-track img {
-  width: 1000px; /* dopasowane do kontenera */
-  height: auto;
-  max-height: 500px;
+  width: 1000px;
+  height: 562px; /* 16:9 proporcja do 1000px szerokości */
   flex-shrink: 0;
-  object-fit: contain; /* nie rozciąga obrazów */
-  background: #000; /* dla lepszej prezentacji np. przezroczystych PNG */
+  object-fit: cover;
+  background: #000; /* możesz usunąć jeśli niepotrzebne */
 }
+
 
 
 .carousel-btn {
