@@ -133,15 +133,19 @@ body {
   color: #444;
 }
 
-/* Contact Section */
 .contact {
   padding: 5rem 9%;
   background-color: #fff;
-  text-align: center; /* zmienione z left na center */
   max-width: 700px;
   margin: auto;
+  /* usuń text-align: center stąd */
+}
+.contact .section-title {
+  text-align: center;  /* wyśrodkuj tylko nagłówek */
+  margin-bottom: 2rem; /* dodaj trochę odstępu pod nagłówkiem */
 }
 .contact form {
+  text-align: left; /* wyrównaj formularz do lewej */
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
