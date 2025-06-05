@@ -9,7 +9,7 @@
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     (function() {
-      emailjs.init("hxFtn4ES55vtUJ8D7"); // <-- Zmienisz to na swój klucz
+      emailjs.init("hxFtn4ES55vtUJ8D7");
     })();
   </script>
 </head>
@@ -62,15 +62,21 @@
 
       <div class="checkbox">
         <input type="checkbox" name="privacy_agreement" required />
-        I agree with the<a href="privacy.html">Privacy Policy</a>
+        I agree with the <a href="privacy.html">Privacy Policy</a>
       </div>
 
       <button type="submit">Send message</button>
     </form>
   </section>
 
+  <!-- Pop-up -->
+  <div class="success-popup" id="success-popup">Message sent successfully!</div>
+
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    const form = document.getElementById('contact-form');
+    const popup = document.getElementById('success-popup');
+
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
 
       const now = new Date().toLocaleString();
@@ -78,11 +84,23 @@
       timeInput.type = 'hidden';
       timeInput.name = 'time';
       timeInput.value = now;
-      this.appendChild(timeInput);
+      form.appendChild(timeInput);
 
-      emailjs.sendForm('service_ifr56xd', 'template_te6cs2n', this)
-        .then(() => alert('Message sent!'))
-        .catch(error => alert('Failed: ' + JSON.stringify(error)));
+      emailjs.sendForm('service_ifr56xd', 'template_te6cs2n', form)
+        .then(() => {
+          popup.classList.add('show');
+          setTimeout(() => popup.classList.remove('show'), 4000);
+          form.reset();
+        })
+        .catch(error => {
+          popup.textContent = 'Sending failed. Please try again.';
+          popup.classList.add('show');
+          setTimeout(() => {
+            popup.classList.remove('show');
+            popup.textContent = 'Message sent successfully!';
+          }, 5000);
+          console.error(error);
+        });
     });
   </script>
 
