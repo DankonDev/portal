@@ -91,43 +91,44 @@
   </section>
 
 <script>
-  const track = document.querySelector('.carousel-track');
-  const nextBtn = document.querySelector('.next');
-  const prevBtn = document.querySelector('.prev');
-  const images = document.querySelectorAll('.carousel-track img');
-  let index = 0;
-  let autoScroll = true;
+const track = document.querySelector('.carousel-track');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+const slides = document.querySelectorAll('.carousel-slide'); // 6 slajdów
+let index = 0;
+let autoScroll = true;
 
-  function updateCarousel() {
-    const slideWidth = images[0].clientWidth;
-    track.style.transform = `translateX(-${index * slideWidth}px)`;
-  }
+function updateCarousel() {
+  const slideWidth = slides[0].clientWidth;
+  track.style.transform = `translateX(-${index * slideWidth}px)`;
+}
 
-  function nextSlide() {
-    index = (index + 1) % images.length;
-    updateCarousel();
-  }
+function nextSlide() {
+  index = (index + 1) % slides.length;  // modulo po liczbie slajdów
+  updateCarousel();
+}
 
-  function prevSlide() {
-    index = (index - 1 + images.length) % images.length;
-    updateCarousel();
-  }
+function prevSlide() {
+  index = (index - 1 + slides.length) % slides.length;  // modulo po liczbie slajdów
+  updateCarousel();
+}
 
-  nextBtn.addEventListener('click', () => {
-    autoScroll = false;
-    nextSlide();
-  });
+nextBtn.addEventListener('click', () => {
+  autoScroll = false;
+  nextSlide();
+});
 
-  prevBtn.addEventListener('click', () => {
-    autoScroll = false;
-    prevSlide();
-  });
+prevBtn.addEventListener('click', () => {
+  autoScroll = false;
+  prevSlide();
+});
 
-  window.addEventListener('resize', updateCarousel); // Responsywność
+window.addEventListener('resize', updateCarousel);
 
-  setInterval(() => {
-    if (autoScroll) nextSlide();
-  }, 4000);
+setInterval(() => {
+  if (autoScroll) nextSlide();
+}, 4000);
+
 </script>
 
 
